@@ -1,0 +1,58 @@
+@model UserDownloadModel
+@using UpLoader_For_ET.DBModels;
+
+<div class="container text-coolwhite mb-3">
+
+    <div class="text-left">
+        <h1 class="display-4">Downloads</h1>
+        @if(Model.uploadDBEntries?.Count != 0)
+        {
+            <p class="subtext">Welcome @(User.Identity?.Name), please select your download below.</p>
+        }
+        else
+        {
+            <p class="subtext">You have nothing to download!</p>
+        }
+        
+    </div>
+
+    <!-- Display a list, if it exists, of the users uploads -->
+    @if(Model.uploadDBEntries != null)
+    {  
+        foreach(UploadDBEntry db in Model.uploadDBEntries)
+        {
+        <div class="col w-100 mb-5 h-100 bg-darkCard survey rounded text-coolwhite p-3 ">
+            <div class="row ">
+
+                <div class="col-8">
+                    <small class="text-orange">@(User.Identity?.Name)</small>
+                    <h2 class="h5">@db.userFileTitle</h2>
+                    <p>@db.userDescription</p>
+                </div>
+                <div class="col-4 text-end">
+                    <form method="post">
+                    <input type="hidden" name="argFileHash" value="@db.fileHash" />
+                    <input type="hidden" name="argFileName" value="@db.userFileTitle" />
+                    <input type="submit" class="btn btn-primary btn-lg" value="Download" />
+                    </form>
+
+                @if(User.IsInRole("Administrators") || User.IsInRole("User"))
+                {
+                    <form method="post" asp-controller="Admin" asp-action="DeleteAlert">
+                    <input type="hidden" name="argFileNameD" value="@db.userFileTitle" />
+                    <input type="hidden" name="argFileHashD" value="@db.fileHash" />
+                    <input type = "submit" class="btn btn-danger btn m-1" value="Delete"/> 
+                    </form>
+                }
+                </div>
+            </div>
+        </div>
+        }
+    }
+
+    else
+    {
+        <p>Nothing to see here, yet.</p>
+    }
+    <br>
+</div>

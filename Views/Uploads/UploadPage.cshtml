@@ -1,0 +1,46 @@
+@model UploadModel
+
+<div class="container text-coolwhite">
+    <div class="text-left">
+        <h1 class="fs-3">Uploads</h1>
+        
+            @if(TempData["Report"] != null)
+            {
+                <h5 class="subtext">@TempData["Report"] </h5>
+            }
+            @if(TempData["Message"] != null)
+            {
+                <p class="text-success fs-4">@TempData["Message"] </p>
+            }
+            @if(TempData["Alert"] != null)
+            {
+                <p class="text-danger fs-4">@TempData["Alert"] </p>
+            }
+        <h5 class="subtext">Uploaded files are restricted to .ogg and .mp3 with ID3v2 tags.</h5>
+    </div>
+
+    <div class="col-md-12 bg-darkCard border-dark border rounded-lg py-2 px-1">
+        <div class="form-group">
+            <form method="post" enctype="multipart/form-data">
+                <label asp-for="Upload" class="control-label subtext fs-6"></label> 
+                <input asp-for="Upload" name="uploadedFile" accept=".ogg,.mp3" /> 
+                <label asp-for="userDescription" class="control-label subtext fs-6"></label>
+                <input asp-for="userDescription" name="comment"/>
+                <span asp-validation-for="Upload" class="text-danger"></span>
+                <span asp-validation-for="userDescription" class="text-danger"></span>
+                <input type="submit" value="Upload" class="btn btn-primary"/>
+            </form>
+        </div>
+    </div>
+
+    @if (Model is not null && Model.HasErrors && Model.ValidationErrors != null)
+    {
+        <div>
+            @foreach(string errorMessage in Model.ValidationErrors)
+            {
+                <div class="alert alert-danger" role="alert">@errorMessage</div>
+            }
+        </div> 
+    }
+</div>
+<partial name="_ValidationScriptsPartial" />

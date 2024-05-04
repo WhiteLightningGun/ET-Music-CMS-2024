@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="~/favicon.ico" />
+    <title>@ViewData["Title"] - Electric Trojan</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/trojan.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/musicplayer.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+<body class="bg-darkpurple">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-darkpurple box-shadow m-2 text-white">
+            <div class="container text-white">
+                <a class="navbar-brand moonblue-text " asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/Electric Trojan Circle with breath.png" width="30" height="30" class="d-inline-block align-top rounded-circle text-white" alt="">
+                    Electric Trojan
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="About" asp-action="ET">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="Contact" asp-action="MessageMe">Contact</a>
+                        </li>
+                        @if(User.IsInRole("Plebian"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="User" asp-action="UserSummary">Summary</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="User" asp-action="UserDownloads">Downloads</a>
+                        </li>
+                        }
+                        @if(User.IsInRole("Administrators") || User.IsInRole("User"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="Uploads" asp-action="UploadPage">Uploads</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="User" asp-action="UserSummary">Summary</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link moonblue-text-clickable" asp-area="" asp-controller="User" asp-action="UserDownloads">Downloads</a>
+                        </li>
+                        }
+                        @if(User.IsInRole("Administrators"))
+                        {
+                        <li class="nav-item">
+                            <a class="nav-link text-success fs-6" asp-area="" asp-controller="Admin" asp-action="Manager">Manage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-success fs-6" asp-area="" asp-controller="Admin" asp-action="AssignTrack">Assign Track</a>
+                        </li>
+                        }
+                    </ul>
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid-B">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="mt-auto footer2 bg-darkpurple moonblue-text">
+        <div class="container">
+            &copy; Electric Trojan - <a asp-area=""  asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,21 @@
+@model DeleteAlertModel
+
+<div class="container bg-pink text-coolwhite">
+    <div class="text-left">
+        <h1 class="display-4">Delete</h1>
+        @if(Model.success)
+        {
+            <p>Success, @Model.fileNameDeleted was deleted</p>
+        }
+        else
+        {
+            <p>Something went wrong, contact the administrator.</p>
+        }
+        @if(User.IsInRole("Administrators"))
+        {
+        <p><a class="nav-link btn-ET text-white subtext-button" asp-action="Manager" asp-controller="Admin">Return To Manage Users</a></p>
+        <br>
+        }
+        <p><a class="nav-link btn-ET text-white subtext-button" asp-controller="User" asp-action="UserDownloads">Return To Downloads</a></p>
+    </div>
+</div>

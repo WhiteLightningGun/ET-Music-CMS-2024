@@ -1,0 +1,345 @@
+
+
+.border-thing
+{
+    border-color: rgb(32, 31, 68);
+}
+
+.login-button
+{
+    background-color: rgb(0, 102, 255);
+}
+
+.bg-colddark
+{
+    background-color: rgba(45, 29, 35, 0.576);
+}
+.text-warmwhite
+{
+    color: rgb(233, 228, 217);
+}
+
+.text-coolwhite
+{
+    color: rgb(230, 236, 242);
+}
+
+.bg-imageSetter
+{
+    background-image: url("/images/Green thunderstorm.jpg");
+    background-size: cover;
+}
+
+.footer2
+{
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+}
+
+.bg-darkpurple
+{
+    background-color: rgb(42, 40, 52);
+}
+
+.bg-darkorange
+{
+    background-color: rgba(16, 14, 12, 0.183);
+}
+
+.link-light-one
+{
+    color:rgb(225, 235, 245) !important;
+}
+
+.moonblue-text
+{
+    color:rgba(238, 252, 254, 0.874) !important;
+    font-weight: 300;
+}
+
+.moonblue-text-clickable
+{
+    color:rgb(219, 233, 235) !important;
+    font-weight: 300;
+}
+
+.moonblue-text-clickable:hover
+{
+    color:rgb(255, 255, 255)!important;
+    font-weight: 300;
+}
+
+.btn-ET {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size:15px;
+    width:100%;
+    height:35px;
+    border-width:1px;
+    color:#fff;
+    border-color:#ffffff00!important;
+    border-top-left-radius:4px;
+    border-top-right-radius:4px;
+    border-bottom-left-radius:4px;
+    border-bottom-right-radius:4px;
+    background:rgb(0, 102, 255);
+  }
+  
+  .btn-ET:hover {
+    background:rgb(216, 227, 237);
+    color: black !important;
+
+  } 
+         
+.subtext
+{
+    /*font-family: 'Arial';*/
+    font-weight: 150;
+    color:rgba(255, 255, 255, 0.745) !important;
+    line-height: 1.4;
+}
+
+.subtext-shadow
+{
+    text-shadow: 0px 0px 2px rgba(8, 0, 1, 0.985)!important;
+}
+
+.subtext-italic
+{
+    font-weight: 150;
+    color:rgba(255, 255, 255, 0.745) !important;
+    line-height: 1.4;
+    font-style: italic !important;
+}
+
+.subtext-button
+{
+    /*font-family: 'Arial';*/
+    font-weight: 600!important;
+}
+
+.big-text
+{
+    font-family: 'Arial';
+}
+
+.big-textB
+{
+    font-family: 'Arial';
+}
+
+.fade-in-A {
+    opacity: 1;
+    position: relative;
+    animation-name: fadeInOpacityA;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+  }
+  
+  @keyframes fadeInOpacityA {
+    0% {
+      right: 150px; 
+      opacity: 0;
+    }
+    100% {
+      right: 0px; 
+      opacity: 1;
+    }
+  }
+
+  .fade-in-B {
+    opacity: 1;
+    position: relative;
+    animation-name: fadeInOpacityB;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+  }
+  
+  @keyframes fadeInOpacityB {
+    0% 
+    {
+        opacity: 0;
+    }
+
+    100% 
+    {
+        opacity: 1;
+    }
+  }
+
+
+  .circle-one {
+    background: blue;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+.feature-one
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.5rem;
+}
+
+.feature-MP
+{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3.5rem;
+    width: 3.5rem;
+    font-size: 1.5rem;
+}
+
+.bg-button-blueMP
+{
+    background:rgb(0, 102, 255);
+    transition: background 0.14s;
+}
+
+.bg-button-blueMP:hover
+{
+    background:rgb(126, 173, 195);
+}
+
+.bg-pink
+{
+    background-color: rgb(35, 35, 47);
+    background-size: cover!important;
+
+}
+
+.bg-darkCard
+{
+    background-color: rgb(30, 30, 41);
+    background-size: cover!important;
+}
+
+.bg-pink:before
+{
+    width: 100%!important;
+    background-color: rgb(32, 59, 47);
+    background-size: cover!important;
+
+}
+
+.bg-pinkish
+{
+    background-color: rgb(26, 24, 20);
+    background-size: cover!important;
+
+}
+
+.bg-darkpink
+{
+    background-color: rgba(34, 2, 25, 0.165);
+}
+
+.bg-button-blue
+{
+    background:rgb(0, 102, 255);
+}
+
+.container-fluid-B
+{
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    /*padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5); */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.videoResponsive {
+	padding-bottom:56.25%;
+  height:0;
+  position:relative;
+	padding-top:30px;
+	overflow:hidden;
+  max-width: 500px;
+}
+.videoResponsive iframe, 
+.videoResponsive object, 
+.videoResponsive embed {
+	position:absolute;
+	left:0;
+  top:0;
+	width:100%;
+	height:100%;
+}
+
+.bg-barGradient
+{
+    background: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(241, 169, 3) 75%)
+}
+
+.rounded-lg
+{
+    border-radius: 0.3rem;
+}
+
+.border-pink
+{
+    border: 5px solid rgb(42, 40, 52)!important;
+    border-radius: 10px;
+}
+.text-orange
+{
+    color: rgb(239, 200, 42);
+}
+
+.masthead
+{
+    height: 100vh;
+    min-height: 400px;
+    background-image: url('/images/SeaGreen Clouds Compressed B.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+    visibility:hidden;
+    
+}
+
+.mastheadB
+{
+    height: 100vh;
+    min-height: 400px;
+    background-image: url('/images/music score shot 2 warm.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mastheadC
+{
+    height: 100vh;
+    min-height: 400px;
+    background-image: url('/images/ET Background Base Hue Shifted Compressed B.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.carouselBG
+{
+    background-color: rgba(8, 8, 8, 0.544);
+}
+
+.aboutImage
+{
+    max-height: 300px;
+}
+
+

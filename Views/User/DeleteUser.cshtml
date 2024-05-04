@@ -1,0 +1,17 @@
+@page
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-left">
+        <h1 class="display-4">Admin Only</h1>
+        <p>Delete User Result:</p>
+
+        @if(TempData["Message"] != null)
+            {
+                <p class="text-success fs-3">@TempData["Message"] </p>
+            }
+
+        @if(TempData["Alert"] != null)
+            {
+                <p class="text-danger fs-3">@TempData["Alert"] </p>
+            }
+    </div>

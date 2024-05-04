@@ -1,0 +1,49 @@
+@model FrontPageReviewModel
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-left">
+        <h1 class="display-4">Admin Only</h1>
+        <p class="fs-3">Front Page Videos Review </p>
+
+        @if(TempData["Message"] != null)
+            {
+                <p class="text-success fs-3">@TempData["Message"] </p>
+            }
+
+    </div>
+
+    <div class="text-left">
+        @if(Model.FrontPageEntries != null)
+        {
+            @foreach(var entry in Model.FrontPageEntries)
+            { 
+            <div class="col w-100 mb-5 h-100 bg-darkCard survey rounded text-coolwhite p-3 ">
+                <div class="row ">
+                    <div class="col-8">
+                        <small class="text-orange">@entry.htmlEmbedLink</small>
+                        <h2 class="h5">@entry.title</h2>
+                        <p>@entry.description</p>
+                    </div>
+                    <div class="col-4">
+                        <a class="nav-link btn-ET text-white subtext-button" asp-controller="Admin" asp-action="FrontPageAdd" asp-route-id="@entry.id">Edit</a>
+                    </div>
+                </div>
+                <div class="row justify-content-left">
+                    <div class="col-lg-4 mb-5">
+                        <div class="card h-100 shadow border-0">
+                            <div class="videoResponsive">
+                                <iframe width="280" height="175" src="@entry.htmlEmbedLink"  frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            } 
+        }
+        else
+        {
+            <p>It's not here.</p>
+        }
+
+
+    </div>

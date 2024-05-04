@@ -1,0 +1,109 @@
+@model ManagerPageModel;
+
+<div class="container text-coolwhite bg-pink">
+  <div class="text-center">
+      <h1 class="display-4">Admin Only</h1>
+  </div>
+
+  <div>
+    <h4 class="fs-4">Available Roles: </h4>
+      @if(Model.interestingRoles != null)
+      {
+          foreach(var role in Model.interestingRoles)
+          {
+          <li>@role</li>
+          }
+      }
+      else
+      {
+          <p>Something went wrong.</p>
+      }
+  </div>
+
+  <table class="table text-coolwhite">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Current Role</th>
+        <th scope="col">Set Role</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if(Model.managerEntries != null)
+      {
+        @foreach(var entry in Model.managerEntries)
+        {
+        <tr>
+        <td scope="row">@entry.userEmail</td>
+        <td>@entry.currentUserRole</td>
+        
+        <form method="post" id="User Role">
+          <input type="hidden" name="userEmailSubmission" value=@entry.userEmail />
+          <input type="hidden" name="currentRole" value=@entry.currentUserRole />
+        <td>
+          
+            <select name="selectedRole">
+              @if(Model.interestingRoles != null)
+              {
+                  foreach(string? role in Model.interestingRoles)
+                  {
+                  <option name="selectedRole" >@role</option>
+                  //associate with entry.useremail for this post form
+                  }
+              }
+            </select>
+        </td>
+        <td>
+          <input type="submit" value="Set Role" class="btn btn-primary"/>
+          <button class="btn btn-danger" asp-action="DeleteUser" asp-controller="User"
+          onclick="return confirm('Do you really want to delete @entry.userEmail?');"
+          >Delete User</button>
+          <button class="btn btn-success" asp-action="ManageUserFiles" asp-controller="Admin">Examine Files</button>
+        
+        </td> 
+        </form>
+        </tr>
+        }
+      }
+      else
+      {
+          <p>error</p>
+      }
+
+    </tbody>
+  </table>
+
+</div>
+
+<div class="container text-coolwhite bg-pink">
+  <div class="row">
+    <div class="col-4 py-1">
+        <p class="py-2">
+        <span class="fs-4 m-2 py-2 ">Contact form is:</span>
+        @if(Model.contactFormVisibility)
+        {
+          <span class="fs-4 m-2 py-2 text-success">Visible</span>
+        }
+        else
+        {
+          <span class="fs-4 m-2 py-2 text-danger">Hidden</span>
+        }
+        </p>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4 py-2">
+      <a class="nav-link btn-ET text-white subtext-button" asp-controller="Contact" asp-action="ContactFormToggle">Change Contact Form Visibility</a>      
+  </div>
+    <div class="col-md-4 py-2">
+        <a class="nav-link btn-ET text-white subtext-button" asp-controller="Admin" asp-action="FrontPageReview">Review Front Page Videos</a>
+    </div>
+    <div class="col-md-4 py-2">
+        <a class="nav-link btn-ET text-white subtext-button" asp-controller="Contact" asp-action="MessageReviewPage">Messages</a>
+    </div>
+  </div>
+
+
+</div>
+

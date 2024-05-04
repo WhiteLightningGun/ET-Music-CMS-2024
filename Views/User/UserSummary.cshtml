@@ -1,0 +1,83 @@
+@model UserSummaryModel;
+
+<div class="container text-coolwhite">
+    <div class="text-left">
+        <h1 class="fs-3">User Summary</h1>
+        @if(Model != null)
+        {
+            <h5 class="subtext">@Model.userName</h5>
+        }
+        else
+        {
+            <p>Something went wrong.</p>
+        }
+
+        @if(TempData["Message"] != null)
+        {
+            <p class="text-success fs-3">@TempData["Message"] </p>
+        }
+    </div>
+
+    <div class="row justify-content-between">
+
+        <div class="col-md-2 bg-darkCard border-pink ">
+            <h5 class="fs-5 text-center my-3">Track Count</p>
+            @if(Model != null && Model.uploadDBEntries != null)
+            {
+                <h1 class="fs-2 text-center">@Model.uploadDBEntries.Count()</h1>
+            }
+
+        </div>
+
+        <div class="col-md-8 bg-darkCard border-pink ">
+            <div class="p-1 m-1"></div>
+            <h5 class="fs-5">File Space Used</h5>
+            @if(Model != null && Model.uploadDBEntries != null)
+            {
+                <div class="progress " style="height: 25px;">
+                <div class="progress-bar bg-warning bg-barGradient text-dark" role="progressbar" style="width: @($"{Model.percentageUsed:0.00}")%" aria-valuenow="@($"{Model.percentageUsed:0.00}")" aria-valuemin="0" aria-valuemax="100">@($"{Model.percentageUsed:0}")%</div>
+                </div>
+            
+            <h5 class="subtext fs-6 py-2">@($"{Model.spaceUsedMB:0.00}") megabytes</h5>
+            }
+            </div>
+
+            <div class="col-md-2 bg-darkCard border-pink ">
+            <h5 class="fs-5 text-center my-3">Space</p>
+            @if(Model != null && Model.uploadDBEntries != null)
+            {
+                <h1 class="fs-2 text-center">@($"{Model.spaceRemaining:0.0}") MB</h1>
+            }
+            </div>
+    </div>
+
+        <div class="row justify-content-start border-pink bg-darkCard">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="p-1 m-2">
+                        <h5 class="fs-5">Track List</h5>
+                        @if(Model != null && Model.uploadDBEntries != null)
+                        {
+                            @if(Model.uploadDBEntries.Count() != 0)
+                            {
+                                @foreach(var upload in Model.uploadDBEntries)
+                                {
+                                    <h5 class="subtext fs-6">@upload.userFileTitle</h5>
+                                }
+                            }
+                            else
+                            {
+                                <h5 class="subtext-italic fs-6">Nothing to see here, yet.</h5>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-3 text-end py-4 px-3 ">
+                    <a class="nav-link btn-ET text-white subtext-button" asp-controller="User" asp-action="UserDownloads">Downloads</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

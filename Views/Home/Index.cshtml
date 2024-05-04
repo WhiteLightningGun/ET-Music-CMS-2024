@@ -1,0 +1,165 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IndexPageModel
+
+<div class="container bg-darkpurple">
+
+    <div class="row text-coolwhite align-items-center fade-in-B p-3 mb-4 ">
+
+        <div class="col-lg-6">
+            <div class="text-left rounded p-3">
+                <h1 class="display-4 big-text">Welcome!</h1>
+                <h5 class="subtext">I am a composer, sound designer and audio engineer.</h5>
+                <h5 class="subtext">If you are a customer of mine here you may login and gain access to your music. Otherwise, scroll down to learn more.</h5>
+                <br>
+                <a class="nav-link btn-ET text-white subtext-button" asp-area="Identity" asp-page="/Account/Login">Login</a>
+            </div>
+        </div>
+
+        <div class="col-lg-6 p-3 ">
+            <div class="text-center">
+                 <img src="~/images/ET01 - light background bevelled.png" class="img-fluid align-top border rounded" alt="">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="bg-pink">
+    <section class="py-5 text-coolwhite border-3 border-black" >
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0 big-text">Musical Satisfaction Guaranteed.</h2></div>
+                <div class="col-lg-8">
+                    <div class="row gx-5 row-cols-1 row-cols-md-2">
+                        <div class="col mb-5 h-100">
+                            <div class="feature-one bg-button-blue bg-gradient text-white rounded-circle rounded-3 mb-3"><i class="bi bi-music-note-beamed"></i></div>
+                            <h2 class="h5 big-text">Composition</h2>
+                            <p class="mb-0 subtext">Since 2008 I have written hundreds of pieces of original music for clients all over the world.</p>
+                        </div>
+                        <div class="col mb-5 h-100">
+                            <div class="feature-one bg-button-blue bg-gradient text-white rounded-circle rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                            <h2 class="h5 big-text">Mixing</h2>
+                            <p class="mb-0 subtext">All recorded music is mixed to suit the environment and thematic context in which it is heard.</p>
+                        </div>
+                        <div class="col mb-5 mb-md-0 h-100">
+                            <div class="feature-one bg-button-blue bg-gradient text-white rounded-circle rounded-3 mb-3"><i class="bi bi-broadcast"></i></div>
+                            <h2 class="h5 big-text">Mastering</h2>
+                            <p class="mb-0 subtext">Mastering is the art of perfect reproduction in a suitable format for you.</p>
+                        </div>
+                        <div class="col h-100">
+                            <div class="feature-one bg-button-blue bg-gradient text-white rounded-circle rounded-3 mb-3"><i class="bi bi-soundwave"></i></div>
+                            <h2 class="h5 big-text">Sound Design</h2>
+                            <p class="mb-0 subtext">To tell the story a sound designer crafts sound effects and builds new musical instruments alike.</p>
+                        </div>
+                        <div class="col mb-5 mb-md-0 h-100">
+                            <div class="feature-one text-white rounded-3 mb-3"></div>
+                            <h2 class="h5"></h2>
+                            <p class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+<section class="py-5">
+                <div class="container px-5 my-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                            <div class="text-center">
+                                <h2 class="fw-bolder text-coolwhite">Listen Here</h2>
+                                <p class="lead fw-normal text-coolwhite mb-5">A selection of music written and produced by Electric Trojan</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="349" src=@Model.frontPageVideos[0].htmlEmbedLink frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[0].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[0].description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="335" src="@Model.frontPageVideos[1].htmlEmbedLink"  frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[1].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[1].description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="349" src="@Model.frontPageVideos[2].htmlEmbedLink"  frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[2].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[2].description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIDEO LINE 2 -->
+
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-8 col-xl-6">
+                        </div>
+                    </div>
+                    <div class="row gx-5">
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="349" src="@Model.frontPageVideos[3].htmlEmbedLink"  frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[3].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[3].description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="335" src="@Model.frontPageVideos[4].htmlEmbedLink"  frameborder="0" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[4].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[4].description</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-5">
+                            <div class="card h-100 shadow border-0">
+                                <div class="videoResponsive">
+                                    <iframe width="560" height="349" src="@Model.frontPageVideos[5].htmlEmbedLink"  frameborder="1" allowfullscreen></iframe>
+                                  </div>
+                                <div class="card-body bg-darkCard text-coolwhite p-4">
+                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">Media</div>
+                                    <h5 class="card-title mb-3">@Model.frontPageVideos[5].title</h5>
+                                    <p class="card-text mb-0 subtext">@Model.frontPageVideos[5].description</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+
+<script src="~/lib/bootstrap/dist/js/indexAnimation.js"></script>

@@ -1,0 +1,52 @@
+@model ManageUserFiles
+@using UpLoader_For_ET.DBModels;
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-center">
+         <h1 class="display-4">Admin Only</h1>
+    </div>
+    <div class="text-left">
+        <p class="fs-4">Examine User Files</p>
+        <p class="fs-5 text-success">For user: @Model.selectedUserName</p>
+
+    </div>
+
+    @if(Model.uploadDBEntries != null)
+    {  
+        foreach(UploadDBEntry uploadDBEntry in Model.uploadDBEntries)
+        {
+        <div class="col w-100 mb-5 h-100 bg-white survey border rounded text-black p-3">
+            <div class="row ">
+
+                <div class="col-8">
+                    <small class="text-success">@Model.selectedUserName</small>
+                    <h2 class="h5">@uploadDBEntry.userFileTitle</h2>
+                    <p>@uploadDBEntry.userDescription</p>
+                    <p class="text-success">@uploadDBEntry.fileHash</p>
+                </div>
+                <div class="col-4 text-end">
+                    <form method="post" asp-controller="User" asp-action="SpecificUserDownload">
+                    <input type="hidden" name=argUserName value = "@Model.selectedUserName">
+                    <input type="hidden" name="argFileHash" value="@uploadDBEntry.fileHash" />
+                    <input type="hidden" name="argFileName" value="@uploadDBEntry.userFileTitle" />
+                    <input type="submit" class="btn btn-primary btn-lg" value="Download" />
+                    </form>
+
+                @if(User.IsInRole("Administrators"))
+                {
+                    <form method="post" asp-controller="Admin" asp-action="DeleteAlert">
+                    <input type="hidden" name="argUserName" value="@Model.selectedUserName" />
+                    <input type="hidden" name="argFileNameD" value="@uploadDBEntry.userFileTitle" />
+                    <input type="hidden" name="argFileHashD" value="@uploadDBEntry.fileHash" />
+                    <input type = "submit" class="btn btn-danger btn m-1" value="Delete"/> 
+                    </form>
+                }
+                </div>
+            </div>
+        </div>
+        }
+    }
+    @if(Model.uploadDBEntries?.Count == 0)
+    {
+        <p>Nothing to see here!</p>
+    }

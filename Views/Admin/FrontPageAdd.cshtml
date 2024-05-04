@@ -1,0 +1,74 @@
+@model FrontPageAddPost
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-left">
+        <h1 class="display-4">Admin Only</h1>
+        <p class="fs-3">Front Page Edit Result</p>
+
+        @if(TempData["Message"] != null)
+            {
+                <p class="text-success fs-3">@TempData["Message"] </p>
+            }
+
+    </div>
+
+    @if(Model != null && Model.selectedFrontPageVideo != null) // i.e. we are editing an already existing video entry
+    {
+    <div class="text-left bg-darkCard rounded p-2">
+        <p class="fs-3">Amend Front Page Video</p>
+        <div class="form-group">
+            <form method="post">
+                <input type="hidden" name="id" value="@Model.selectedFrontPageVideo.id" />
+                <label asp-for="Title" class="control-label subtext fs-6"></label>
+                <input asp-for="Title" name="Title" value="@Model.selectedFrontPageVideo.title" class="form-control"/>
+                <br>
+
+                <label asp-for="userDescription" class="control-label subtext fs-6"></label>
+                <input asp-for="userDescription" name="userDescription" value="@Model.selectedFrontPageVideo.description" class="form-control"/>
+                <br>
+                <label asp-for="htmlEmbedURL" class="control-label subtext fs-6"></label>
+                <input asp-for="htmlEmbedURL" name="htmlEmbedURL" value="@Model.selectedFrontPageVideo.htmlEmbedLink" class="form-control"/>
+                <br>
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <span asp-validation-for="userDescription" class="text-danger"></span>
+                <span asp-validation-for="htmlEmbedURL" class="text-danger"></span>
+                <br>
+                <input type="submit" value="Edit Video" class="btn btn-primary"/>
+            </form>
+        </div>
+  
+
+    </div>
+
+    }
+    else
+    {
+        <div class="text-left bg-darkCard rounded">
+        <p class="fs-3">Add Entry To Front Page Videos</p>
+        <div class="form-group">
+            <form method="post">
+                <label asp-for="Title" class="control-label subtext fs-6"></label>
+                <input asp-for="Title" name="Title"/>
+                <br>
+
+                <label asp-for="userDescription" class="control-label subtext fs-6"></label>
+                <input asp-for="userDescription" name="userDescription"/>
+                <br>
+                <label asp-for="htmlEmbedURL" class="control-label subtext fs-6"></label>
+                <input asp-for="htmlEmbedURL" name="htmlEmbedURL"/>
+                <br>
+                <span asp-validation-for="Title" class="text-danger"></span>
+                <span asp-validation-for="userDescription" class="text-danger"></span>
+                <span asp-validation-for="htmlEmbedURL" class="text-danger"></span>
+                <br>
+                <input type="submit" value="Add Video" class="btn btn-primary"/>
+            </form>
+        </div>
+  
+
+    </div>
+    }
+<div class="container text-coolwhite bg-pink">
+  <div class="col-4 py-5">
+      <a class="nav-link btn-ET text-white subtext-button" asp-controller="Admin" asp-action="FrontPageReview">Review Front Page Videos</a>
+  </div>

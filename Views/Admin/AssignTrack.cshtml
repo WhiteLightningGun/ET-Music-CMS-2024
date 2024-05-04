@@ -1,0 +1,98 @@
+@model AssignTrackModel
+
+@{
+    ViewData["Title"] = "Assign Track Page";
+}
+
+<div class="container bg-pink text-coolwhite">
+    <div class="text-center">
+         <h1 class="display-4">Admin Only</h1>
+    </div>
+
+    <div class="text-left">
+        <h1 class="fs-4">Assign Track</h1>
+    </div>
+
+    <div class="form-group">
+        <form method="post" enctype="multipart/form-data" id="AssignTrackForm">
+
+        <div class="form-floating m-3">
+            <div class="row bg-darkCard my-4 rounded">
+                <div class="col-md-3">
+                    <div class="m-1 bg-darkCard">
+                        <label asp-for="selectedUser" class="control-label">Selected User:</label>
+                    </div>
+                    <span asp-validation-for="selectedUser" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 bg-darkCard m-1">
+                    <select asp-for="selectedUser" name="selectedUser" >
+                    @if(Model !=null)
+                    {
+                        @if(Model.listOfUsers != null)
+                        {
+                            foreach(var role in Model.listOfUsers)
+                            {
+                            <option name="selectedUser" >@role</option>
+                            }
+                        }
+                    }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating m-3">
+            <div class="row bg-darkCard my-4 rounded">
+                <div class="col-md-3">
+                    <div class="m-1 bg-darkCard">
+                        <label asp-for="Upload" class="control-label">Selected File:</label>
+                    </div>
+                     <span asp-validation-for="Upload" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 bg-darkCard m-1">
+                    <input asp-for="Upload" name="uploadedFile" accept=".ogg,.mp3" aria-required="true" required/>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-floating m-3">
+            <div class="row bg-darkCard my-4 rounded">
+                <div class="col-md-3">
+                    <div class="m-1 bg-darkCard">
+                        <label asp-for="userDescription" class="control-label">Comment on track: </label>
+                    </div>
+                     <span asp-validation-for="userDescription" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 bg-darkCard m-1">
+                    <input asp-for="userDescription" name="comment" placeholder="mandatory" aria-required="true" required/>
+                </div>
+            </div>
+        </div>
+
+        <br>
+            <input type="submit" value="Upload" class="btn btn-primary"/>
+        </form>
+    <br>
+    @if(TempData["Message"] != null)
+    {
+        <p class="text-success fs-4">@TempData["Message"] </p>
+    }
+    @if(TempData["Alert"] != null)
+    {
+        <p class="text-danger fs-4">@TempData["Alert"] </p>
+    }
+    @if (Model is not null && Model.HasErrors && Model.ValidationErrors != null)
+    {
+        <div>
+            @foreach(string errorMessage in Model.ValidationErrors)
+            {
+                <div class="alert alert-danger" role="alert">@errorMessage</div>
+            }
+        </div> 
+    }
+    </div>
+
+    </div>
+
+    
+</div>

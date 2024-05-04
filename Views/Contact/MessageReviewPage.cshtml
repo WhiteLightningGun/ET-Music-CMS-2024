@@ -1,0 +1,49 @@
+@model MessageReviewModel
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-left">
+        <h1 class="display-4">Admin Only</h1>
+        <p class="fs-3">Message Review</p>
+
+        @if(TempData["Message"] != null)
+            {
+                <p class="text-success fs-3">@TempData["Message"] </p>
+            }
+
+    </div>
+
+        <div class="text-left">
+        @if(Model.Messages != null)
+        {
+            @foreach(var entry in Model.Messages)
+            { 
+            <div class="col w-100 mb-5 h-100 bg-darkCard survey rounded text-coolwhite p-3 ">
+                <div class="row ">
+                    <div class="col-8">
+                        <small class="text-orange">@entry.TimeArrived</small>
+                        <h2 class="h5">@entry.Email</h2>
+                        <p>@entry.Message</p>
+                    </div>
+                    <div class="col-4">
+                    <form method="post" asp-controller="Contact" asp-action="MessageReviewPage">
+                        <input type="hidden" name="messageID" value="@entry.id" />
+                        <input type = "submit" class="btn btn-danger btn m-1" value="Delete"/> 
+                    </form>
+                    </div>
+                </div>
+                <div class="row justify-content-left">
+                    <div class="col-lg-4 mb-5">
+                        <div class="card h-100 shadow border-0">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            } 
+        }
+        @if (Model.Messages != null && Model.Messages.Count == 0 )
+        {
+            <p class="subtext">No messages today.</p>
+        }
+        <br>
+        </div>

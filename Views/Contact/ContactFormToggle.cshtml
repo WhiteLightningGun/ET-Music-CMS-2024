@@ -1,0 +1,15 @@
+@model ContactFormToggleView
+
+<div class="container text-coolwhite bg-pink">
+    <div class="text-left">
+        <h1 class="display-4">Admin Only</h1>
+        <p>Contact form is currently: @Model.contactFormVisibility</p>
+    </div>
+
+<div class="container text-coolwhite bg-pink">
+  <div class="col-4 py-5">
+      <a class="nav-link btn-ET text-white subtext-button" asp-controller="Admin" asp-action="Manager">Return to Manager Page</a>
+  </div>
+
+
+</div>

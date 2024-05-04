@@ -1,0 +1,11 @@
+@model string?
+
+@if(Model != null)
+{
+    <p class="modal-readout" id="property-modal">A message: @Model</p>
+}
+else
+{
+    <p class="modal-readout" id="property-modal">Nothing to see here.</p>
+}
+
