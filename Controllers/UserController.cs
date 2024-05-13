@@ -1,25 +1,18 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using UpLoader_For_ET.Models;
 using Microsoft.AspNetCore.Authorization;
 using UpLoader_For_ET.Data;
-using UpLoader_For_ET.DBModels;
 using static System.IO.Path;
 using UpLoader_For_ET.Configuration;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using UpLoader_For_ET.Services;
-using System.Text;
-using System.Text.Encodings.Web;
 using UpLoader_For_ET.Tools;
 using Microsoft.Extensions.Options;
-using UpLoader_For_ET.StaticClasses;
 using Microsoft.AspNetCore.Identity;
 
 namespace UpLoader_For_ET.Controllers;
 public class UserController : Controller
 {
-    private readonly IWebHostEnvironment _env;
-    private readonly ILogger<HomeController> _logger;
     private readonly ApplicationDbContext ApplicationDB;
     public UserSpaceLimitSetting userSpaceLimit;
     private MessageLimitSetting messageSettings;
@@ -29,9 +22,8 @@ public class UserController : Controller
     private static string MainDirectory = Environment.CurrentDirectory;
     public readonly ControllerTools ct;
     
-    public UserController(ILogger<HomeController> logger, 
+    public UserController( 
     ApplicationDbContext injectedADB, 
-    IWebHostEnvironment env,
     IOptions<UserSpaceLimitSetting> _userSpaceLimit,
     IEmailSender _emailSender,
     ContactFormVisibility contactFormVisibility,
@@ -39,9 +31,7 @@ public class UserController : Controller
     ControllerTools _controllerTools,
     UserManager<IdentityUser> userManager)
     {
-        _logger = logger;
         ApplicationDB = injectedADB;
-        _env = env;
         userSpaceLimit = _userSpaceLimit.Value;
         emailSender = _emailSender;
         contactFormControl = contactFormVisibility;

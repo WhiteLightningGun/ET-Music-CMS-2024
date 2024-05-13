@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Identity; //Role manager, user manager
-using Microsoft.AspNetCore.Mvc; // Controller, IAction Result
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using UpLoader_For_ET.Data;
 
 namespace UpLoader_For_ET.Controllers;

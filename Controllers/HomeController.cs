@@ -1,15 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using UpLoader_For_ET.Models;
-using Microsoft.AspNetCore.Authorization;
 using UpLoader_For_ET.Data;
 using UpLoader_For_ET.DBModels;
-using static System.IO.Path;
 using UpLoader_For_ET.Configuration;
-using Microsoft.AspNetCore.Identity.UI.Services;
-using UpLoader_For_ET.Services;
-using System.Text;
-using System.Text.Encodings.Web;
 
 
 using Microsoft.Extensions.Options;
